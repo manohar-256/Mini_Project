@@ -19,4 +19,6 @@ Then add these two lines to the top of app.py:
 from dotenv import load_dotenv
 load_dotenv()
 
+Main problem occurs in app.py script, that's why specific versions need to mentioned in pip install. Check if the error is resolved otherwise try to debug the code. Currently, the minimal frontend code is also written app.py. But once the backend works properly, we can make seperate HTML/CSS/JS files and integrate app.py with the frontend later.
+
 
