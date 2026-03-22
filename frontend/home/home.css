@@ -1,0 +1,378 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F4F6F9;
+    margin: 0;
+    padding: 0;
+}
+
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    height: 8vh;
+    width: 100%;
+    margin-top: 3vh;
+    padding: 0 1rem;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    color: #1E3A8A;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-left: 0; 
+    font-size: 1.2rem;
+}
+
+a {
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.home, .about, .con {
+    color: #1E3A8A;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+#btn1 {
+    background-color: #1E3A8A;
+    color: white;
+    border-radius: 4rem;
+    text-align: center;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: none;
+}
+
+#btn1:hover {
+    background-color: rgb(20, 20, 150);
+    box-shadow: 0 10px 20px rgba(33, 33, 190, 0.4);
+    transform: translateY(-3px);
+}
+
+#btn1:active {
+    transform: scale(0.95);
+}
+
+
+.hero {
+    background-color: #EFF6FF;
+    min-height: 70vh;
+    margin: 5vh 5vw;
+    margin-top: 10vh;
+    border-radius: 3.5rem;
+    border: 2px solid black;
+    transition: all 0.4s ease;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.hero:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0px 20px 40px rgba(37, 99, 235, 0.25);
+    border-color: #2563EB;
+}
+
+.hero-text {
+    margin-left: 10px;
+    margin-top: 0;
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-image {
+    background-size: cover;
+    background-image: url("home.jpg");
+    border-radius: 3.5rem;
+    border: transparent;
+    height: 50vh;
+    width: 40%;
+    min-width: 280px;
+    flex-shrink: 0;
+}
+
+
+.primary-btn {
+    background-color: #1E3A8A;
+    color: white;
+    border-radius: 4rem;
+    text-align: center;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 40px;
+    display: inline-block;
+    border: none;
+    font-size: 1rem;
+}
+
+.primary-btn:hover {
+    background-color: rgb(20, 20, 150);
+    box-shadow: 0 10px 20px rgba(33, 33, 190, 0.4);
+    transform: translateY(-3px);
+}
+
+.primary-btn:active {
+    transform: scale(0.95);
+}
+
+
+h2 {
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 3rem;
+}
+
+
+.footer {
+    text-align: center;
+    background-color: black;
+    font-size: 0.55rem;
+    color: white;
+    min-height: 8vh;
+    width: 100%;
+    padding: 1.2vh 1rem;
+    margin-top: 10vh;
+}
+
+
+
+
+
+@media (min-width: 1400px) {
+    .hero {
+        margin: 10vh 10vw;
+        min-height: 65vh;
+    }
+
+    .hero-image {
+        height: 55vh;
+        width: 42%;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+}
+
+
+@media (max-width: 1399px) and (min-width: 1024px) {
+    .hero {
+        margin: 8vh 6vw;
+    }
+
+    .hero-image {
+        width: 42%;
+        height: 48vh;
+    }
+}
+
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .nav {
+        height: auto;
+        padding: 1rem;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+        flex-basis: 100%;
+        text-align: center;
+        margin-bottom: 0.3rem;
+    }
+
+    .home, .about, .con {
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 5vh 4vw;
+        margin-top: 6vh;
+        border-radius: 2.5rem;
+        min-height: auto;
+        padding: 2.5rem;
+        gap: 1.5rem;
+    }
+
+    .hero-image {
+        width: 100%;
+        min-width: unset;
+        height: 35vh;
+        border-radius: 2rem;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .primary-btn {
+        margin-top: 24px;
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+    .nav {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 0.5rem;
+        margin-top: 0;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .home, .about, .con {
+        font-size: 0.9rem;
+    }
+
+    #btn1 {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        flex-direction: column;
+        margin: 4vh 4vw;
+        margin-top: 4vh;
+        border-radius: 2rem;
+        min-height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-image {
+        width: 100%;
+        min-width: unset;
+        height: 30vh;
+        border-radius: 1.5rem;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .primary-btn {
+        margin-top: 20px;
+        padding: 10px 22px;
+        font-size: 0.9rem;
+    }
+
+    .footer {
+        font-size: 0.7rem;
+        margin-top: 6vh;
+    }
+}
+
+
+@media (max-width: 479px) {
+    .nav {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        gap: 0.4rem;
+        margin-top: 0;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .home, .about, .con {
+        font-size: 0.85rem;
+    }
+
+    #btn1 {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+    }
+
+    .hero {
+        flex-direction: column;
+        margin: 3vh 3vw;
+        margin-top: 3vh;
+        border-radius: 1.5rem;
+        min-height: auto;
+        padding: 1.5rem 1rem;
+        gap: 1rem;
+    }
+
+    .hero:hover {
+        transform: none; 
+        box-shadow: 0px 10px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    .hero-image {
+        width: 100%;
+        min-width: unset;
+        height: 25vh;
+        min-height: 180px;
+        border-radius: 1rem;
+    }
+
+    .hero-text {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .primary-btn {
+        margin-top: 16px;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer {
+        font-size: 0.65rem;
+        padding: 1.2vh 0.75rem;
+        margin-top: 5vh;
+    }
+}
+
+
+
+
+
+
