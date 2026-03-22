@@ -8,7 +8,7 @@ const themeToggle=document.querySelector("#theme-toggle-btn");
 const icon = themeToggle.querySelector("span");
 
 
-const API_KEY = "AIzaSyAEUsfn3O-pFwFJ-Qka9bko3Za3A1-eeN0";
+const API_KEY = "AIzaSyAS_-me0YMAWgPLpcZJAbmIXtSuFPj7DOU";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
 let typingInterval, controller;
