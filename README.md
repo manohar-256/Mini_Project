@@ -1,24 +1,76 @@
-Libraries to be installed (Run in Terminal):-
-pip install langchain==0.1.20 langchain-community==0.0.38 langchain-huggingface==0.0.3 langchain-core==0.1.52 faiss-cpu==1.7.4 sentence-transformers==2.7.0 huggingface-hub==0.23.4 flask pypdf python-dotenv tf-keras langchain-text-splitters
+# AI-Powered Legal Assistant (Insurance RAG Chatbot)
 
-First Run ingest.py script
+An AI-powered legal assistant specializing in insurance law. It uses a **Retrieval-Augmented Generation (RAG)** pipeline to answer questions based exclusively on the content of uploaded PDF documents — no hallucinated answers.
 
-How to get the Free API Key:
-Go to HuggingFace.co and sign up.
-Go to Settings -> Access Tokens.
-Create a new token (Role: Read).
-Copy this token (Starts with hf_...). You will need this in your Python code.
+## Tech Stack
 
-After getting the API Key, Run this on terminal:
-$env:HF_TOKEN = "hf_your_actual_token_here"
+| Component | Technology |
+|-----------|-----------|
+| **Backend** | Flask (Python) |
+| **LLM** | Llama 3.3 70B via [Groq](https://groq.com/) (free tier) |
+| **Embeddings** | `sentence-transformers/all-MiniLM-L6-v2` (runs locally) |
+| **Vector Store** | FAISS (local, CPU) |
+| **PDF Parsing** | PyPDF2 |
+| **Frontend** | HTML, CSS, JavaScript |
+
+## How It Works
+
+1. **Ingest** — PDFs in the `data/` folder are parsed, chunked, and embedded into a FAISS vector store.
+2. **Query** — User questions are embedded and matched against the most relevant document chunks.
+3. **Answer** — The top-4 matching chunks are sent as context to the Groq LLM, which generates an answer strictly from the provided context.
+
+## Setup
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Add your Groq API key
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and replace `your_groq_api_key_here` with your actual key from [console.groq.com](https://console.groq.com).
+
+### 4. Add PDF documents
+
+Place your insurance/legal PDF files in the `data/` folder. Sample PDFs are included for demonstration.
+
+### 5. Run the app
+
+```bash
 python app.py
-OR
-create a .env file in your C:\Mini_Project\ folder:
-HF_TOKEN=hf_your_actual_token_here
-Then add these two lines to the top of app.py:
-from dotenv import load_dotenv
-load_dotenv()
+```
 
-Main problem occurs in app.py script, that's why specific versions need to mentioned in pip install. Check if the error is resolved otherwise try to debug the code. Currently, the minimal frontend code is also written app.py. But once the backend works properly, we can make seperate HTML/CSS/JS files and integrate app.py with the frontend later.
+Open [http://localhost:5000](http://localhost:5000) in your browser.
 
+## Project Structure
 
+```
+├── app.py              # Flask server & routes
+├── rag_engine.py       # RAG pipeline (ingest, embed, query)
+├── data/               # PDF documents (source knowledge)
+├── vectorstore/        # FAISS index (auto-generated, gitignored)
+├── templates/
+│   └── index.html      # Chat UI template
+├── static/
+│   ├── style.css       # Styling
+│   └── script.js       # Frontend logic
+├── requirements.txt    # Python dependencies
+├── .env.example        # Environment variable template
+└── .gitignore
+```
+
+## License
+
+This project is for educational purposes.
