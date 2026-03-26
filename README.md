@@ -24,8 +24,8 @@ An AI-powered legal assistant specializing in insurance law. It uses a **Retriev
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/manohar-256/Mini_Project.git
+cd Mini_Project
 ```
 
 ### 2. Install dependencies
