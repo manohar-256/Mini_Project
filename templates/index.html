@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Legal Assistant for Insurance Awareness and Advisory. Ask your insurance law questions and get instant, context-aware answers.">
+    <title>PolicyGuard — AI Insurance Legal Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- ── Sidebar ────────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">⚖️</div>
+            <h1>PolicyGuard</h1>
+            <span class="brand-tag">AI Legal Assistant</span>
+        </div>
+
+        <div class="sidebar-info">
+            <div class="info-card">
+                <div class="info-icon">📋</div>
+                <p>Ask questions about insurance laws, policies, claims, and regulations.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🔒</div>
+                <p>Answers are based solely on verified legal documents loaded into the system.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">⚡</div>
+                <p>Powered by RAG technology for accurate, context-aware responses.</p>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <p class="disclaimer">⚠️ This tool provides general legal information only. It is not a substitute for professional legal advice.</p>
+        </div>
+    </aside>
+
+    <!-- ── Main Chat Area ─────────────────────────────────────────────── -->
+    <main class="chat-area">
+        <header class="chat-header">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+                <h2>Insurance Legal Advisor</h2>
+            </div>
+            <div class="status-badge" id="status-badge">
+                <span class="status-dot"></span>
+                <span>Online</span>
+            </div>
+        </header>
+
+        <div class="chat-messages" id="chat-messages">
+            <!-- Welcome message -->
+            <div class="message bot-message">
+                <div class="message-avatar">⚖️</div>
+                <div class="message-content">
+                    <div class="message-bubble">
+                        <p>Hello! I'm <strong>PolicyGuard</strong>, your AI-powered insurance legal assistant.</p>
+                        <p>I can help you understand insurance laws, policy terms, claim procedures, and regulatory guidelines. Ask me anything about insurance law!</p>
+                    </div>
+                    <span class="message-time" id="welcome-time"></span>
+                </div>
+            </div>
+
+            <!-- Suggested questions -->
+            <div class="suggestions" id="suggestions">
+                <p class="suggestions-label">Try asking:</p>
+                <button class="suggestion-chip" onclick="askSuggestion(this)">What are the key principles of insurance law?</button>
+                <button class="suggestion-chip" onclick="askSuggestion(this)">How does the claims process work?</button>
+                <button class="suggestion-chip" onclick="askSuggestion(this)">What is subrogation in insurance?</button>
+            </div>
+        </div>
+
+        <!-- Input area -->
+        <div class="chat-input-area">
+            <form id="chat-form" class="chat-form">
+                <div class="input-wrapper">
+                    <textarea
+                        id="user-input"
+                        placeholder="Ask your insurance law question…"
+                        rows="1"
+                        maxlength="2000"
+                        aria-label="Type your question"
+                    ></textarea>
+                    <button type="submit" id="send-btn" class="send-btn" aria-label="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
