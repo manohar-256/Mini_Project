@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('frontend_asset', filename='contact/contact-form.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <form id="feedbackForm" autocomplete="off">
+        <div class="container">
+            <h1>Feedback</h1>
+
+            <div class="inputBox">
+                <p>Full Name:</p>
+                <input type="text" id="name" placeholder="Enter Full name" required autocomplete="off">
+            </div>
+
+            <div class="inputBox">
+                <p>Email Address:</p>
+                <input type="email" id="email" placeholder="Enter Email" required autocomplete="off">
+            </div>
+
+            <div class="inputBox">
+                <p>Phone Number:</p>
+                <input type="number" id="num" placeholder="Enter Phone Number" required autocomplete="off">
+            </div>
+
+            <div class="inputBox">
+                <p>Subject:</p>
+                <input type="text" id="sub" placeholder="Enter Subject" required autocomplete="off">
+            </div>
+
+            <div class="inputBox">
+                <p>Message:</p>
+                <textarea rows="4" placeholder="Enter Message" id="msg" required autocomplete="off"></textarea>
+            </div>
+
+            <div class="button">
+                <button id="btn" type="submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        window.APP_ROUTES = {
+            contact: "{{ url_for('contact') }}"
+        };
+    </script>
+    <script src="{{ url_for('frontend_asset', filename='contact/contact-form.js') }}"></script>
+</body>
+</html>

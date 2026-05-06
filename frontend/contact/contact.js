@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const routes = window.APP_ROUTES || {};
 
       const loginBtn = document.getElementById("btn1");
 
@@ -25,35 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
             loginBtn.innerHTML = '<i class="fa-solid fa-user-graduate"></i> Log in';
         } else {
        
-            window.location.href = "../login/index.html";
+            window.location.href = routes.login || "/login";
         }
 
     });
 
     document.querySelector(".home")?.addEventListener("click", () => {
-        window.location.href = "../home/index.html";
+        window.location.href = routes.home || "/";
     });
 
     document.querySelector(".about")?.addEventListener("click", () => {
-        window.location.href = "../about/about.html";
+        window.location.href = routes.about || "/about";
     });
 
     document.querySelector(".con")?.addEventListener("click", () => {
-        window.location.href = "../contact/contact.html";
-    });
-
-    
-    document.getElementById("btn1")?.addEventListener("click", () => {
-        window.location.href = "../login/login.html";
+        window.location.href = routes.contact || "/contact";
     });
 
       
-    setTimeout(()=>{
-        document.querySelector(".contact-btn")?.addEventListener("click", () => {
-        window.location.href = "../contact-form/contact-form.html";
+    document.querySelector(".contact-btn")?.addEventListener("click", (event) => {
+        if (!event.currentTarget.getAttribute("href")) {
+            event.preventDefault();
+            window.location.href = routes.contactForm || "/contact/form";
+        }
     });
-
-    },2000);
      
 
 });

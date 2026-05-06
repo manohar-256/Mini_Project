@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const routes = window.APP_ROUTES || {};
 
     const loginBtn = document.getElementById("btn1");
 
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loginBtn.innerHTML = '<i class="fa-solid fa-user-graduate"></i> Log in';
         } else {
        
-            window.location.href = "../login/login.html";
+            window.location.href = routes.login || "/login";
         }
 
     });
@@ -33,15 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     document.querySelector(".home")?.addEventListener("click", () => {
-        window.location.href = "../home/index.html";
+        window.location.href = routes.home || "/";
     });
 
     document.querySelector(".about")?.addEventListener("click", () => {
-        window.location.href = "../about/about.html";
+        window.location.href = routes.about || "/about";
     });
 
     document.querySelector(".con")?.addEventListener("click", () => {
-        window.location.href = "../contact/contact.html";
+        window.location.href = routes.contact || "/contact";
     });
 
 
@@ -52,11 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(!loggedUser){
             alert("Please login first");
-            window.location.href = "../login/login.html";
+            window.location.href = routes.login || "/login";
             return;
         }
         setTimeout(()=>{
-                    window.location.href = "../chat/chat.html";
+                    window.location.href = routes.chat || "/chat";
         },2000);
 
     });

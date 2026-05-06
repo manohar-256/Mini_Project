@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+const routes = window.APP_ROUTES || {};
 
 const user = document.querySelector(".user");
 const pass = document.querySelector(".pass");
@@ -60,13 +61,13 @@ btn.addEventListener("click", () => {
     msg2.style.textAlign="center";
 
     setTimeout(()=>{
-        window.location.href = "../home/index.html";
+        window.location.href = routes.home || "/";
     },1000);
 
 });
 
 btn1.addEventListener("click",()=>{
-    window.location.href="create-login/index1.html";
+    window.location.href = routes.register || "/register";
 });
 
 });

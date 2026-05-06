@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const routes = window.APP_ROUTES || {};
 
 
       const loginBtn = document.getElementById("btn1");
@@ -26,20 +27,20 @@ document.addEventListener("DOMContentLoaded", () => {
             loginBtn.innerHTML = '<i class="fa-solid fa-user-graduate"></i> Log in';
         } else {
        
-            window.location.href = "../login/index.html";
+            window.location.href = routes.login || "/login";
         }
 
     });
     document.querySelector(".home")?.addEventListener("click", () => {
-        window.location.href = "../home/index.html";
+        window.location.href = routes.home || "/";
     });
 
     document.querySelector(".about")?.addEventListener("click", () => {
-        window.location.href = "../about/about.html";
+        window.location.href = routes.about || "/about";
     });
 
     document.querySelector(".con")?.addEventListener("click", () => {
-        window.location.href = "../contact/contact.html";
+        window.location.href = routes.contact || "/contact";
     });
 
 

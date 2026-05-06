@@ -2,6 +2,7 @@
 # ── Imports ─────────────────────────────────────────────────
 import os
 import json
+from pathlib import Path
 from groq import Groq
 from PyPDF2 import PdfReader
 from langchain_text_splitters             import RecursiveCharacterTextSplitter
@@ -16,7 +17,32 @@ MANIFEST_PATH = os.path.join(VECTORSTORE_DIR, "manifest.json")
 
 # ── Embedding model ───────────────────────────────────────
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
+
+
+def _resolve_embedding_model_source() -> tuple[str, dict]:
+    """Prefer a cached local Hugging Face snapshot when available."""
+    cache_root = (
+        Path.home()
+        / ".cache"
+        / "huggingface"
+        / "hub"
+        / "models--sentence-transformers--all-MiniLM-L6-v2"
+        / "snapshots"
+    )
+
+    if cache_root.exists():
+        snapshots = sorted(path for path in cache_root.iterdir() if path.is_dir())
+        if snapshots:
+            return str(snapshots[-1]), {"local_files_only": True}
+
+    return EMBEDDING_MODEL_NAME, {}
+
+
+EMBEDDING_MODEL_SOURCE, EMBEDDING_MODEL_KWARGS = _resolve_embedding_model_source()
+embeddings = HuggingFaceEmbeddings(
+    model_name=EMBEDDING_MODEL_SOURCE,
+    model_kwargs=EMBEDDING_MODEL_KWARGS,
+)
 
 # ── Groq API ───────────────────────────────────────────────────────
 GROQ_MODEL = "llama-3.3-70b-versatile"
@@ -54,8 +80,8 @@ def _extract_text_from_pdfs(pdf_dir: str) -> str:
 def _split_text(text: str):
     """Split raw text into overlapping chunks for embedding."""
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50,
+        chunk_size=800,
+        chunk_overlap=200,
         length_function=len,
     )
     return splitter.split_text(text)
@@ -153,6 +179,7 @@ def _build_messages(question: str, context_chunks: list[str]) -> list[dict]:
                 "You are a helpful legal assistant specializing in insurance law. "
                 "Answer the user's question using ONLY the context provided below. "
                 "If the context does not contain enough information to answer, say so clearly. "
+                "Along with fetching the data from the context as it is, apply logical reasoning and high level interpretation skills to better undertsand the user's question and provide best possible answers for a wide range of questions. "
                 "Do not make up information.\n\n"
                 f"### Context:\n{context}"
             ),

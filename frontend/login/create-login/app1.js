@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded",()=>{
+    const routes = window.APP_ROUTES || {};
     const user=document.querySelector(".user");
     const name=document.querySelector(".name");
     const pass=document.querySelector(".pass");
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
             
 setTimeout(() => {
-    window.location.href = "../login.html";
+    window.location.href = routes.login || "/login";
 }, 2000);
 
 

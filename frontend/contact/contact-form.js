@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+const routes = window.APP_ROUTES || {};
 
 const form = document.getElementById("feedbackForm");
 
@@ -30,7 +31,7 @@ form.addEventListener("submit", (e) => {
 
     alert("Feedback submitted successfully!");
 
-    window.location.href="../contact/contact.html";
+    window.location.href = routes.contact || "/contact";
 
 });
 });

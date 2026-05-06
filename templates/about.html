@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolicyGuard AI</title>
+    <link rel="stylesheet" href="{{ url_for('frontend_asset', filename='about/about.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <h3 class="logo">PolicyGuard AI</h3>
+            <a href="{{ url_for('home') }}" class="home">Home</a>
+            <a href="{{ url_for('about') }}" class="about">About</a>
+            <a href="{{ url_for('contact') }}" class="con">Contact</a>
+            <button id="btn1">
+                <i class="fa-solid fa-user-graduate"></i> Log in
+            </button>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="img"></div>
+        <section>
+            <div class="info">
+                <h1>About our Mini Project</h1>
+                <p>PolicyGuard is an AI-powered legal assistant that simplifies complex insurance policies, legal jargon, and claim procedures for everyday consumers.</p>
+            </div>
+
+            <div class="mission">
+                <i class="fa-solid fa-bullseye"></i>
+                <p>To democratize access to insurance legal knowledge by making policy terms, claim processes, and consumer rights understandable for everyone.</p>
+            </div>
+
+            <div class="vision">
+                <i class="fa-solid fa-eye"></i>
+                <p>To become the most trusted AI legal assistant in the insurance space and bridge the gap between complex legal systems and the everyday policyholder.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <p>Conditions of Use Privacy Notice your Adscprivacy Choices</p>
+            <p>@2026 PolicyGuard AI.com,Inc.or its affilates</p>
+        </div>
+    </footer>
+
+    <script>
+        window.APP_ROUTES = {
+            home: "{{ url_for('home') }}",
+            about: "{{ url_for('about') }}",
+            contact: "{{ url_for('contact') }}",
+            login: "{{ url_for('login') }}"
+        };
+    </script>
+    <script src="{{ url_for('frontend_asset', filename='about/about.js') }}"></script>
+</body>
+</html>
